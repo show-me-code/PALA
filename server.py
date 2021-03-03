@@ -2,12 +2,13 @@
 import torch.multiprocessing as mp
 from multiprocessing.managers import ListProxy, BarrierProxy, AcquirerProxy, EventProxy
 from gala.arguments import get_args
+from gala.model import Policy
 mp.current_process().authkey = b'abc'
 
 
 
 def server(manager,host, port, key, args):
-    barrier = manager.Barrier(4)
+    #barrier = manager.Barrier(4)
     '''sync_list = manager.list()
     buffer_locks = manager.list()
     read_events = manager.list()
@@ -21,17 +22,27 @@ def server(manager,host, port, key, args):
 
     #read_events = manager.list([manager.list([manager.Event() for _ in range(num_learners)])
     #                        for _ in range(num_learners)]) #2 dim array is supported
-    read_events = manager.list([manager.list([False for _ in range(num_learners)])
-                            for _ in range(num_learners)]) #2 dim array is supported
+    #read_events = manager.list([
+    #    manager.list([False for _ in range(num_learners)])
+    #    for _ in range(num_learners)]) #2 dim array is supported
+    read_events = manager.list([True for _ in range(num_learners * num_learners)])
     #write_events = manager.list([
     #    manager.list([manager.Event() for _ in range(num_learners)])
     #    for _ in range(num_learners)])
-    write_events = manager.list([
-            manager.list([False for _ in range(num_learners)])
-            for _ in range(num_learners)])
-
+    write_events = manager.list([True for _ in range(num_learners * num_learners)])
+    #write_events = manager.list([
+    #    manager.list([False for _ in range(num_learners)])
+    #    for _ in range(num_learners)])
     msg_buffer = manager.list()
-    manager.register('get_barrier', callable=lambda: barrier, proxytype=BarrierProxy)
+    for i in range(num_learners):
+        actor_critic = Policy(
+            (4, 84, 84),
+            base_kwargs={'recurrent': args.recurrent_policy},
+            env_name=args.env_name)
+        actor_critic.to('cpu')
+        msg_buffer.append(actor_critic)
+
+    #manager.register('get_barrier', callable=lambda: barrier, proxytype=BarrierProxy)
     manager.register('get_sync_list', callable=lambda :sync_list, proxytype=ListProxy)
     #manager.register('get_buffer_locks', callable=lambda : buffer_locks, proxytype=ListProxy)
     manager.register('get_read_events', callable=lambda : read_events, proxytype=ListProxy)

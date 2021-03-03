@@ -22,7 +22,12 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7fb0f2fe-b6dc-4d89-ae52-c50a8cab6282" name="Default Changelist" comment="changing the logic of parameter num_learners, add num_nodes, this commit with no test and can't sure whether it could function normally." />
+    <list default="true" id="7fb0f2fe-b6dc-4d89-ae52-c50a8cab6282" name="Default Changelist" comment="changing the logic of parameter num_learners, add num_nodes, this commit with no test and can't sure whether it could function normally.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gala/gpu_gossip_buffer.py" beforeDir="false" afterPath="$PROJECT_DIR$/gala/gpu_gossip_buffer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server.py" beforeDir="false" afterPath="$PROJECT_DIR$/server.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -59,9 +64,9 @@
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RecentsManager">
@@ -71,7 +76,6 @@
   </component>
   <component name="RunManager" selected="Python.main2">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
-      <module name="gala-master-distprocess" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -82,6 +86,7 @@
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
       <option name="PARAMETERS" value="" />
@@ -93,7 +98,6 @@
       <method v="2" />
     </configuration>
     <configuration name="main2" type="PythonConfigurationType" factoryName="Python">
-      <module name="gala-master-distprocess" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -104,6 +108,7 @@
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
       <option name="PARAMETERS" value="--dist-rank=1" />
@@ -115,7 +120,6 @@
       <method v="2" />
     </configuration>
     <configuration name="server" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="gala-master-distprocess" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -126,6 +130,7 @@
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/server.py" />
       <option name="PARAMETERS" value="" />
@@ -188,6 +193,9 @@
       <workItem from="1612313208065" duration="8891000" />
       <workItem from="1614085628140" duration="15334000" />
       <workItem from="1614307039473" duration="764000" />
+      <workItem from="1614307855111" duration="13628000" />
+      <workItem from="1614430993877" duration="2879000" />
+      <workItem from="1614502092913" duration="28232000" />
     </task>
     <task id="LOCAL-00002" summary="changing it to multi-peers">
       <created>1611654161855</created>
@@ -227,14 +235,19 @@
     <option name="LAST_COMMIT_MESSAGE" value="changing the logic of parameter num_learners, add num_nodes, this commit with no test and can't sure whether it could function normally." />
   </component>
   <component name="WindowStateProjectService">
-    <state x="2641" y="378" width="1084" height="716" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1611747779097">
-      <screen x="1920" y="0" width="2560" height="1440" />
+    <state x="773" y="391" width="1084" height="716" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1614431422130">
+      <screen x="72" y="28" width="2488" height="1383" />
     </state>
     <state x="2641" y="378" width="1084" height="716" key="#com.intellij.execution.impl.EditConfigurationsDialog/1920.0.2560.1440/0.28.1920.1052@1920.0.2560.1440" timestamp="1611747779097" />
+    <state x="773" y="391" key="#com.intellij.execution.impl.EditConfigurationsDialog/72.28.2488.1383/2560.0.1920.1080@72.28.2488.1383" timestamp="1614431422130" />
     <state x="975" y="621" width="671" height="203" key="#com.jetbrains.python.refactoring.move.PyMakeFunctionTopLevelDialog" timestamp="1614152948129">
       <screen x="72" y="28" width="2488" height="1383" />
     </state>
     <state x="975" y="621" width="671" height="203" key="#com.jetbrains.python.refactoring.move.PyMakeFunctionTopLevelDialog/72.28.2488.1383/2560.0.1920.1080@72.28.2488.1383" timestamp="1614152948129" />
+    <state x="1074" y="328" key="#xdebugger.evaluate" timestamp="1614430560369">
+      <screen x="72" y="28" width="2488" height="1383" />
+    </state>
+    <state x="1074" y="328" key="#xdebugger.evaluate/72.28.2488.1383/2560.0.1920.1080@72.28.2488.1383" timestamp="1614430560369" />
     <state x="2202" y="132" width="2048" height="1189" key="DiffContextDialog" timestamp="1611744461452">
       <screen x="1920" y="0" width="2560" height="1440" />
     </state>
@@ -243,55 +256,60 @@
       <screen x="1920" y="0" width="2560" height="1440" />
     </state>
     <state x="3019" y="477" width="424" height="491" key="FileChooserDialogImpl/1920.0.2560.1440/0.28.1920.1052@1920.0.2560.1440" timestamp="1611649257305" />
-    <state x="1149" y="617" width="415" height="292" key="Github.ShareDialog" timestamp="1614307718371">
+    <state x="1149" y="617" width="633" height="220" key="Github.ShareDialog" timestamp="1614308057453">
       <screen x="72" y="28" width="2488" height="1383" />
     </state>
     <state x="3028" y="613" width="415" height="292" key="Github.ShareDialog/1920.0.2560.1440/0.28.1920.1052@1920.0.2560.1440" timestamp="1610412165201" />
-    <state x="1149" y="617" key="Github.ShareDialog/72.28.2488.1383/2560.0.1920.1080@72.28.2488.1383" timestamp="1614307718371" />
-    <state x="2957" y="338" width="548" height="770" key="Github.UntrackedFilesDialog" timestamp="1610412204984">
-      <screen x="1920" y="0" width="2560" height="1440" />
+    <state x="1149" y="617" width="633" height="220" key="Github.ShareDialog/72.28.2488.1383/2560.0.1920.1080@72.28.2488.1383" timestamp="1614308057453" />
+    <state x="1080" y="353" width="548" height="770" key="Github.UntrackedFilesDialog" timestamp="1614308095001">
+      <screen x="72" y="28" width="2488" height="1383" />
     </state>
     <state x="2957" y="338" width="548" height="770" key="Github.UntrackedFilesDialog/1920.0.2560.1440/0.28.1920.1052@1920.0.2560.1440" timestamp="1610412204984" />
-    <state width="2432" height="517" key="GridCell.Tab.0.bottom" timestamp="1614215835423">
+    <state x="1080" y="353" key="Github.UntrackedFilesDialog/72.28.2488.1383/2560.0.1920.1080@72.28.2488.1383" timestamp="1614308095001" />
+    <state width="2432" height="529" key="GridCell.Tab.0.bottom" timestamp="1614693614561">
       <screen x="72" y="28" width="2488" height="1383" />
     </state>
     <state width="2432" height="712" key="GridCell.Tab.0.bottom/1920.0.2560.1440/0.28.1920.1052@0.28.1920.1052" timestamp="1610853373549" />
     <state width="2432" height="266" key="GridCell.Tab.0.bottom/1920.0.2560.1440/0.28.1920.1052@1920.0.2560.1440" timestamp="1612339350922" />
-    <state width="2432" height="517" key="GridCell.Tab.0.bottom/72.28.2488.1383/2560.0.1920.1080@72.28.2488.1383" timestamp="1614215835423" />
-    <state width="2432" height="517" key="GridCell.Tab.0.center" timestamp="1614215835423">
+    <state width="2432" height="529" key="GridCell.Tab.0.bottom/72.28.2488.1383/2560.0.1920.1080@72.28.2488.1383" timestamp="1614693614561" />
+    <state width="2432" height="529" key="GridCell.Tab.0.center" timestamp="1614693614561">
       <screen x="72" y="28" width="2488" height="1383" />
     </state>
     <state width="2432" height="712" key="GridCell.Tab.0.center/1920.0.2560.1440/0.28.1920.1052@0.28.1920.1052" timestamp="1610853373549" />
     <state width="2432" height="266" key="GridCell.Tab.0.center/1920.0.2560.1440/0.28.1920.1052@1920.0.2560.1440" timestamp="1612339350922" />
-    <state width="2432" height="517" key="GridCell.Tab.0.center/72.28.2488.1383/2560.0.1920.1080@72.28.2488.1383" timestamp="1614215835423" />
-    <state width="2432" height="517" key="GridCell.Tab.0.left" timestamp="1614215835423">
+    <state width="2432" height="529" key="GridCell.Tab.0.center/72.28.2488.1383/2560.0.1920.1080@72.28.2488.1383" timestamp="1614693614561" />
+    <state width="2432" height="529" key="GridCell.Tab.0.left" timestamp="1614693614561">
       <screen x="72" y="28" width="2488" height="1383" />
     </state>
     <state width="2432" height="712" key="GridCell.Tab.0.left/1920.0.2560.1440/0.28.1920.1052@0.28.1920.1052" timestamp="1610853373549" />
     <state width="2432" height="266" key="GridCell.Tab.0.left/1920.0.2560.1440/0.28.1920.1052@1920.0.2560.1440" timestamp="1612339350922" />
-    <state width="2432" height="517" key="GridCell.Tab.0.left/72.28.2488.1383/2560.0.1920.1080@72.28.2488.1383" timestamp="1614215835423" />
-    <state width="2432" height="517" key="GridCell.Tab.0.right" timestamp="1614215835423">
+    <state width="2432" height="529" key="GridCell.Tab.0.left/72.28.2488.1383/2560.0.1920.1080@72.28.2488.1383" timestamp="1614693614561" />
+    <state width="2432" height="529" key="GridCell.Tab.0.right" timestamp="1614693614561">
       <screen x="72" y="28" width="2488" height="1383" />
     </state>
     <state width="2432" height="712" key="GridCell.Tab.0.right/1920.0.2560.1440/0.28.1920.1052@0.28.1920.1052" timestamp="1610853373549" />
     <state width="2432" height="266" key="GridCell.Tab.0.right/1920.0.2560.1440/0.28.1920.1052@1920.0.2560.1440" timestamp="1612339350922" />
-    <state width="2432" height="517" key="GridCell.Tab.0.right/72.28.2488.1383/2560.0.1920.1080@72.28.2488.1383" timestamp="1614215835423" />
-    <state width="2432" height="664" key="GridCell.Tab.1.bottom" timestamp="1612337907778">
-      <screen x="1920" y="0" width="2560" height="1440" />
+    <state width="2432" height="529" key="GridCell.Tab.0.right/72.28.2488.1383/2560.0.1920.1080@72.28.2488.1383" timestamp="1614693614561" />
+    <state width="2432" height="511" key="GridCell.Tab.1.bottom" timestamp="1614653486343">
+      <screen x="72" y="28" width="2488" height="1383" />
     </state>
     <state width="2432" height="664" key="GridCell.Tab.1.bottom/1920.0.2560.1440/0.28.1920.1052@1920.0.2560.1440" timestamp="1612337907778" />
-    <state width="2432" height="664" key="GridCell.Tab.1.center" timestamp="1612337907778">
-      <screen x="1920" y="0" width="2560" height="1440" />
+    <state width="2432" height="511" key="GridCell.Tab.1.bottom/72.28.2488.1383/2560.0.1920.1080@72.28.2488.1383" timestamp="1614653486343" />
+    <state width="2432" height="511" key="GridCell.Tab.1.center" timestamp="1614653486343">
+      <screen x="72" y="28" width="2488" height="1383" />
     </state>
     <state width="2432" height="664" key="GridCell.Tab.1.center/1920.0.2560.1440/0.28.1920.1052@1920.0.2560.1440" timestamp="1612337907778" />
-    <state width="2432" height="664" key="GridCell.Tab.1.left" timestamp="1612337907778">
-      <screen x="1920" y="0" width="2560" height="1440" />
+    <state width="2432" height="511" key="GridCell.Tab.1.center/72.28.2488.1383/2560.0.1920.1080@72.28.2488.1383" timestamp="1614653486343" />
+    <state width="2432" height="511" key="GridCell.Tab.1.left" timestamp="1614653486343">
+      <screen x="72" y="28" width="2488" height="1383" />
     </state>
     <state width="2432" height="664" key="GridCell.Tab.1.left/1920.0.2560.1440/0.28.1920.1052@1920.0.2560.1440" timestamp="1612337907778" />
-    <state width="2432" height="664" key="GridCell.Tab.1.right" timestamp="1612337907778">
-      <screen x="1920" y="0" width="2560" height="1440" />
+    <state width="2432" height="511" key="GridCell.Tab.1.left/72.28.2488.1383/2560.0.1920.1080@72.28.2488.1383" timestamp="1614653486343" />
+    <state width="2432" height="511" key="GridCell.Tab.1.right" timestamp="1614653486343">
+      <screen x="72" y="28" width="2488" height="1383" />
     </state>
     <state width="2432" height="664" key="GridCell.Tab.1.right/1920.0.2560.1440/0.28.1920.1052@1920.0.2560.1440" timestamp="1612337907778" />
+    <state width="2432" height="511" key="GridCell.Tab.1.right/72.28.2488.1383/2560.0.1920.1080@72.28.2488.1383" timestamp="1614653486343" />
     <state x="2714" y="452" width="1033" height="541" key="IDE.errors.dialog" timestamp="1610441939745">
       <screen x="1920" y="0" width="2560" height="1440" />
     </state>
@@ -341,9 +359,9 @@
           <option name="timeStamp" value="21" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/gala/gpu_gossip_buffer.py</url>
-          <line>45</line>
-          <option name="timeStamp" value="22" />
+          <url>file://$PROJECT_DIR$/main.py</url>
+          <line>255</line>
+          <option name="timeStamp" value="23" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -357,9 +375,9 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/gala_master_distprocess$server.coverage" NAME="server Coverage Results" MODIFIED="1612339350917" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/gala_master_distprocess_changing_to_multinodes__1_$server.coverage" NAME="server Coverage Results" MODIFIED="1614215829594" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/gala_master_distprocess_changing_to_multinodes__1_$main.coverage" NAME="main Coverage Results" MODIFIED="1614215833737" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/gala_master_distprocess_changing_to_multinodes__1_$main2.coverage" NAME="main2 Coverage Results" MODIFIED="1614215835418" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/gala_master_distprocess_changing_to_multinodes__1_$server.coverage" NAME="server Coverage Results" MODIFIED="1614693609888" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/gala_master_distprocess_changing_to_multinodes__1_$main.coverage" NAME="main Coverage Results" MODIFIED="1614693611602" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/gala_master_distprocess_changing_to_multinodes__1_$main2.coverage" NAME="main2 Coverage Results" MODIFIED="1614693613074" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/gala_master_distprocess$main.coverage" NAME="main Coverage Results" MODIFIED="1612337684365" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/gala_master_distprocess$main2.coverage" NAME="main2 Coverage Results" MODIFIED="1612337455257" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>

@@ -259,12 +259,14 @@ def make_gossip_buffer(args, mng, device):
         #    mng.list([mng.Event() for _ in range(args.num_learners)])
         #    for _ in range(args.num_learners)])
         write_events = mng.get_write_events()
+        msg_buffer = mng.get_msg_buffer()
+
         # Need to maintain a reference to all objects in main processes
         _references = [topology, actor_critic,
                        read_events, write_events, sync_list]
         gossip_buffer = GossipBuffer(topology, actor_critic,
                                      read_events, write_events, sync_list,
-                                     mng,sync_freq=args.sync_freq, num_nodes=args.num_nodes)
+                                     mng,sync_freq=args.sync_freq, num_nodes=args.num_nodes, msg_buffer = msg_buffer)
     else:
         _references = None
         gossip_buffer = None
@@ -276,7 +278,7 @@ def train(args):
     pp.pprint(args)
 
     proc_manager = mp.Manager()
-    proc_manager.register('get_barrier')
+    #proc_manager.register('get_barrier')
     proc_manager.register('get_sync_list')
     #proc_manager.register('get_buffer_locks')
     proc_manager.register('get_read_events')

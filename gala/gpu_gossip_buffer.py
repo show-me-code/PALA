@@ -21,12 +21,12 @@ import os
 
 class GossipBuffer():
 
-    def __init__(self, topology, model, read_events, #todo delete buffer_locks
-                 write_events, sync_list, proc_manager ,sync_freq=0, num_nodes = 1):
+    def __init__(self, topology, model, read_events,
+                 write_events, sync_list, proc_manager ,sync_freq=0, num_nodes = 1, msg_buffer = 0):
         """ GossipBuffer """
 
         self.topology = topology
-        self.num_learners = len(topology)
+        self.num_learners = len(topology) # all learners in the cluster
         self.sync_list = sync_list
         self.sync_freq = sync_freq
 
@@ -35,30 +35,49 @@ class GossipBuffer():
         self.aggregate_circle_time_start = 0
         self.aggregate_circle_time_end = 0
         self.num_nodes = num_nodes
+        self.num_learner_per_node = int(self.num_learners/self.num_nodes)
         # Initialize message buffer (4-item object):
         # [0] -> Msg-Tensor
         # [1] -> Events recording peers that have read the message
         # [2] -> Events recording peer that has written the message
         # [3] -> Lock for safe access of Msg-Tensor
         #self.msg_buffer = []
-
+        self.read_events = read_events
+        self.write_events = write_events
         self.msg_buffer = proc_manager.get_msg_buffer()
-        for rank in range(self.num_learners):
+        print('num_learners', self.num_learners)
+        #all_learner = self.num_learners * self.num_nodes
+        '''for rank in range(self.num_learners):
             msg = copy.deepcopy(model)
             msg.share_memory()
-            r_events = read_events[rank]
-            w_events = write_events[rank]
+            #r_events = read_events[rank]
+            #w_events = write_events[rank]
+
+            r_events = copy.copy(read_events[rank*self.num_learners : (rank+1)*self.num_learners]) #shallow copy problem it is not shallow copy
+            w_events = copy.copy(write_events[rank*self.num_learners : (rank+1)*self.num_learners])
+            #r_events = read_events
+            #w_events = write_events
+            counter = 0
+            #print(r_events)
+            print(rank * self.num_learners, ':', (rank + 1) * self.num_learners)
             #lock = buffer_locks[rank]
             #self.msg_buffer.append(proc_manager.list([msg, r_events, w_events, lock]))
             self.msg_buffer.append(list([msg, r_events, w_events]))
 
         # Initialize each Read-Buffer as 'read'
-        for msg_buffer in self.msg_buffer:
-            read_event_list = copy.copy(msg_buffer[1]) #todo use shallow copy or the change won't work
+        for i in range(self.num_learners):
+            read_event_list = self.msg_buffer[i][1] #todo use shallow copy or the change won't work
             #for event in read_event_list:
                 #event.set()
-            for i in range(len(read_event_list)): #todo use shallow copy or itself
-                read_event_list[i] = True
+            print(len(self.read_events))
+            for j in range(len(read_event_list)): #todo use shallow copy or itself
+                read_event_list[j] = True
+                self.read_events[i * self.num_learners + j] = True
+            print(r_events)
+        print('self.msg_buffer',len(self.msg_buffer))
+        print('read_events',len(read_events))
+        print('read_event_list',len(read_event_list))
+        #print('self.msg_buffer', list(self.msg_buffer))'''
 
     def write_message(self, rank, model, rotate=False):
         """
@@ -74,25 +93,25 @@ class GossipBuffer():
         WARNING: setting rotate=True with sync_freq > 1 not currently supported
         """
         with torch.no_grad():
-
             # Get local broadcast-buffer
-            msg_buffer = self.msg_buffer[rank]
+            #MAYBE WE NEED to LOAD event from server directly
+            '''msg_buffer = self.msg_buffer[rank]
             broadcast_buffer = msg_buffer[0]
-            read_event_list = copy.copy(msg_buffer[1])
-            write_event_list = copy.copy(msg_buffer[2])
-           #lock = msg_buffer[3]
-
+            read_event_list = msg_buffer[1]
+            write_event_list = msg_buffer[2]'''
+            broadcast_buffer = self.msg_buffer[rank]
+            read_event_list = self.read_events[rank*self.num_learners : (rank+1)*self.num_learners]
+            write_event_list = self.write_events[rank*self.num_learners : (rank+1)*self.num_learners]
+            #lock = msg_buffer[3]
             # Check if out-peers finished reading our last message
             out_peers, _ = self.topology[rank].get_peers()
-
             #print(os.getpid(),'outpeers', out_peers)
             read_complete = True
             for peer in out_peers:
                 #if not read_event_list[peer].is_set():
-                if not  read_event_list[peer] == True: #todo this only define it's true or false so we don't need to
+                if not read_event_list[peer] == True: #todo this only define it's true or false so we don't need to
                     read_complete = False
                     break
-
             # If peers done reading our last message, wait and clear events
             if read_complete:
                 for peer in out_peers:
@@ -106,6 +125,7 @@ class GossipBuffer():
                             pass
                     #read_event.clear()
                     read_event_list[peer] = False
+                    self.read_events[rank*self.num_learners+peer] = False #broadcast the change to network
             # If not done reading, cannot write another message right now
             else:
                 return
@@ -125,6 +145,7 @@ class GossipBuffer():
                 #write_event_list[peer].set()
                 #todo use itself simulate event
                 write_event_list[peer] = True
+                self.write_events[rank*self.num_learners + peer] = True
 
 
     def aggregate_message(self, rank, model):
@@ -143,8 +164,9 @@ class GossipBuffer():
             write_complete = True
             self.aggregate_circle_time_start = time.time()
             for peer in in_peers:
-                peer_buffer = self.msg_buffer[peer]
-                write_event = copy.copy(peer_buffer[2][rank])
+                #peer_buffer = self.msg_buffer[peer]
+                #write_event = peer_buffer[2][rank]
+                write_event = self.write_events[peer*self.num_learners + rank]
                 #if not write_event.is_set():
                 #todo use itself to simulate event
                 if not write_event == True:
@@ -157,16 +179,19 @@ class GossipBuffer():
             # If peers done writing or message too stale, wait and clear events
             if write_complete or stale_assert:
                 for peer in in_peers:
-                    peer_buffer = self.msg_buffer[peer]
+                    #peer_buffer = self.msg_buffer[peer]
                     #write_event = peer_buffer[2][rank]
                     #write_event.wait()
                     while True:
-                        if peer_buffer[2][rank] == True: #todo use peerbuffer itself to simulate event
+                        #if peer_buffer[2][rank] == True: #todo use peerbuffer itself to simulate event
+                        if self.write_events[peer*self.num_learners + rank] == True:
                             break
                         else:
                             pass
                     #write_event.clear() #加锁
-                    peer_buffer[2][rank] = False
+                    #peer_buffer[2][rank] = False
+
+                    self.write_events[peer*self.num_learners + rank] = False
                     self.sync_list[rank] = 0
             # Not done writing, but staleness is still tolerable
             else:
@@ -182,11 +207,12 @@ class GossipBuffer():
 
             # Aggregate received messages
             for peer in in_peers:
-                peer_buffer = self.msg_buffer[peer]
+                #peer_buffer = self.msg_buffer[peer]
                 #lock = peer_buffer[3]
                 #with lock:
                 # Read message and update 'params'
-                peer_msg = peer_buffer[0]
+                #peer_msg = peer_buffer[0]
+                peer_msg = self.msg_buffer[peer]
                 peer_msg.to('cuda:0')
                 model.to('cuda:0')
                 for p, bp in zip(model.parameters(),
@@ -196,7 +222,8 @@ class GossipBuffer():
                 # Mark message as 'read'
                 #peer_buffer[1][rank].set() #聚合完成，设置为可写入
                 #todo use itself to simulate
-                peer_buffer[1][rank] = True
+                #peer_buffer[1][rank] = True
+                self.read_events[peer*self.num_learners + rank] = True
             #model.cuda()
             self.aggregate_time_end = time.time()
 
