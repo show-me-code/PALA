@@ -300,7 +300,7 @@ def train(args):
     # Make actor-learner processes
     proc_list = []
     for rank in range(0, args.num_learners): #todo change the rank for distribute peers
-
+        time.sleep(0.1)
         # Uncomment these lines to use 2 GPUs
         # gpu_id = int(rank % 2)  # Even-rank agents on gpu-0, odd-rank on gpu-1
         # device = torch.device('cuda:%s' % gpu_id if args.cuda else 'cpu')

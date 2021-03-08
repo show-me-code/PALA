@@ -16,14 +16,21 @@
       <path>
         <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
         <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:master" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
       </path>
     </expand>
-    <select />
+    <select>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:remove_shallow_copy" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7fb0f2fe-b6dc-4d89-ae52-c50a8cab6282" name="Default Changelist" comment="changing the logic of parameter num_learners, add num_nodes, this commit with no test and can't sure whether it could function normally.">
+    <list default="true" id="7fb0f2fe-b6dc-4d89-ae52-c50a8cab6282" name="Default Changelist" comment="this commit remove shallow copy by using proxy directly">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gala/arguments.py" beforeDir="false" afterPath="$PROJECT_DIR$/gala/arguments.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gala/gpu_gossip_buffer.py" beforeDir="false" afterPath="$PROJECT_DIR$/gala/gpu_gossip_buffer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server.py" beforeDir="false" afterPath="$PROJECT_DIR$/server.py" afterDir="false" />
@@ -63,6 +70,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -195,7 +203,9 @@
       <workItem from="1614307039473" duration="764000" />
       <workItem from="1614307855111" duration="13628000" />
       <workItem from="1614430993877" duration="2879000" />
-      <workItem from="1614502092913" duration="28232000" />
+      <workItem from="1614502092913" duration="29170000" />
+      <workItem from="1614735513909" duration="8765000" />
+      <workItem from="1614820358020" duration="2450000" />
     </task>
     <task id="LOCAL-00002" summary="changing it to multi-peers">
       <created>1611654161855</created>
@@ -211,7 +221,14 @@
       <option name="project" value="LOCAL" />
       <updated>1611759088194</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="this commit remove shallow copy by using proxy directly">
+      <created>1614733352085</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1614733352085</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -222,7 +239,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="remove_shallow_copy" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -232,7 +261,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="changing it to multi-peers" />
     <MESSAGE value="changing the logic of parameter num_learners, add num_nodes, this commit with no test and can't sure whether it could function normally." />
-    <option name="LAST_COMMIT_MESSAGE" value="changing the logic of parameter num_learners, add num_nodes, this commit with no test and can't sure whether it could function normally." />
+    <MESSAGE value="this commit remove shallow copy by using proxy directly" />
+    <option name="LAST_COMMIT_MESSAGE" value="this commit remove shallow copy by using proxy directly" />
   </component>
   <component name="WindowStateProjectService">
     <state x="773" y="391" width="1084" height="716" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1614431422130">
@@ -266,30 +296,34 @@
     </state>
     <state x="2957" y="338" width="548" height="770" key="Github.UntrackedFilesDialog/1920.0.2560.1440/0.28.1920.1052@1920.0.2560.1440" timestamp="1610412204984" />
     <state x="1080" y="353" key="Github.UntrackedFilesDialog/72.28.2488.1383/2560.0.1920.1080@72.28.2488.1383" timestamp="1614308095001" />
-    <state width="2432" height="529" key="GridCell.Tab.0.bottom" timestamp="1614693614561">
+    <state width="2432" height="529" key="GridCell.Tab.0.bottom" timestamp="1614757501410">
       <screen x="72" y="28" width="2488" height="1383" />
     </state>
     <state width="2432" height="712" key="GridCell.Tab.0.bottom/1920.0.2560.1440/0.28.1920.1052@0.28.1920.1052" timestamp="1610853373549" />
     <state width="2432" height="266" key="GridCell.Tab.0.bottom/1920.0.2560.1440/0.28.1920.1052@1920.0.2560.1440" timestamp="1612339350922" />
-    <state width="2432" height="529" key="GridCell.Tab.0.bottom/72.28.2488.1383/2560.0.1920.1080@72.28.2488.1383" timestamp="1614693614561" />
-    <state width="2432" height="529" key="GridCell.Tab.0.center" timestamp="1614693614561">
+    <state width="2432" height="529" key="GridCell.Tab.0.bottom/72.28.2488.1383/2560.0.1920.1080@72.28.2488.1383" timestamp="1614733158035" />
+    <state width="2432" height="529" key="GridCell.Tab.0.bottom/72.28.2488.1383/2560.107.1920.1080@72.28.2488.1383" timestamp="1614757501410" />
+    <state width="2432" height="529" key="GridCell.Tab.0.center" timestamp="1614757501410">
       <screen x="72" y="28" width="2488" height="1383" />
     </state>
     <state width="2432" height="712" key="GridCell.Tab.0.center/1920.0.2560.1440/0.28.1920.1052@0.28.1920.1052" timestamp="1610853373549" />
     <state width="2432" height="266" key="GridCell.Tab.0.center/1920.0.2560.1440/0.28.1920.1052@1920.0.2560.1440" timestamp="1612339350922" />
-    <state width="2432" height="529" key="GridCell.Tab.0.center/72.28.2488.1383/2560.0.1920.1080@72.28.2488.1383" timestamp="1614693614561" />
-    <state width="2432" height="529" key="GridCell.Tab.0.left" timestamp="1614693614561">
+    <state width="2432" height="529" key="GridCell.Tab.0.center/72.28.2488.1383/2560.0.1920.1080@72.28.2488.1383" timestamp="1614733158035" />
+    <state width="2432" height="529" key="GridCell.Tab.0.center/72.28.2488.1383/2560.107.1920.1080@72.28.2488.1383" timestamp="1614757501410" />
+    <state width="2432" height="529" key="GridCell.Tab.0.left" timestamp="1614757501410">
       <screen x="72" y="28" width="2488" height="1383" />
     </state>
     <state width="2432" height="712" key="GridCell.Tab.0.left/1920.0.2560.1440/0.28.1920.1052@0.28.1920.1052" timestamp="1610853373549" />
     <state width="2432" height="266" key="GridCell.Tab.0.left/1920.0.2560.1440/0.28.1920.1052@1920.0.2560.1440" timestamp="1612339350922" />
-    <state width="2432" height="529" key="GridCell.Tab.0.left/72.28.2488.1383/2560.0.1920.1080@72.28.2488.1383" timestamp="1614693614561" />
-    <state width="2432" height="529" key="GridCell.Tab.0.right" timestamp="1614693614561">
+    <state width="2432" height="529" key="GridCell.Tab.0.left/72.28.2488.1383/2560.0.1920.1080@72.28.2488.1383" timestamp="1614733158035" />
+    <state width="2432" height="529" key="GridCell.Tab.0.left/72.28.2488.1383/2560.107.1920.1080@72.28.2488.1383" timestamp="1614757501410" />
+    <state width="2432" height="529" key="GridCell.Tab.0.right" timestamp="1614757501410">
       <screen x="72" y="28" width="2488" height="1383" />
     </state>
     <state width="2432" height="712" key="GridCell.Tab.0.right/1920.0.2560.1440/0.28.1920.1052@0.28.1920.1052" timestamp="1610853373549" />
     <state width="2432" height="266" key="GridCell.Tab.0.right/1920.0.2560.1440/0.28.1920.1052@1920.0.2560.1440" timestamp="1612339350922" />
-    <state width="2432" height="529" key="GridCell.Tab.0.right/72.28.2488.1383/2560.0.1920.1080@72.28.2488.1383" timestamp="1614693614561" />
+    <state width="2432" height="529" key="GridCell.Tab.0.right/72.28.2488.1383/2560.0.1920.1080@72.28.2488.1383" timestamp="1614733158035" />
+    <state width="2432" height="529" key="GridCell.Tab.0.right/72.28.2488.1383/2560.107.1920.1080@72.28.2488.1383" timestamp="1614757501410" />
     <state width="2432" height="511" key="GridCell.Tab.1.bottom" timestamp="1614653486343">
       <screen x="72" y="28" width="2488" height="1383" />
     </state>
@@ -327,10 +361,11 @@
       <screen x="1920" y="0" width="2560" height="1440" />
     </state>
     <state x="3125" y="634" width="221" height="178" key="SimpleOpenTaskDialog/1920.0.2560.1440/0.28.1920.1052@1920.0.2560.1440" timestamp="1609812476095" />
-    <state x="2831" y="451" width="800" height="543" key="Vcs.Push.Dialog.v2" timestamp="1611759097940">
-      <screen x="1920" y="0" width="2560" height="1440" />
+    <state x="957" y="461" width="800" height="543" key="Vcs.Push.Dialog.v2" timestamp="1614733363671">
+      <screen x="72" y="28" width="2488" height="1383" />
     </state>
     <state x="2831" y="451" width="800" height="543" key="Vcs.Push.Dialog.v2/1920.0.2560.1440/0.28.1920.1052@1920.0.2560.1440" timestamp="1611759097940" />
+    <state x="957" y="461" key="Vcs.Push.Dialog.v2/72.28.2488.1383/2560.0.1920.1080@72.28.2488.1383" timestamp="1614733363671" />
     <state x="2902" y="230" width="667" height="978" key="find.popup" timestamp="1609815187548">
       <screen x="1920" y="0" width="2560" height="1440" />
     </state>
@@ -375,9 +410,9 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/gala_master_distprocess$server.coverage" NAME="server Coverage Results" MODIFIED="1612339350917" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/gala_master_distprocess_changing_to_multinodes__1_$server.coverage" NAME="server Coverage Results" MODIFIED="1614693609888" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/gala_master_distprocess_changing_to_multinodes__1_$main.coverage" NAME="main Coverage Results" MODIFIED="1614693611602" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/gala_master_distprocess_changing_to_multinodes__1_$main2.coverage" NAME="main2 Coverage Results" MODIFIED="1614693613074" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/gala_master_distprocess_changing_to_multinodes__1_$server.coverage" NAME="server Coverage Results" MODIFIED="1614754846867" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/gala_master_distprocess_changing_to_multinodes__1_$main.coverage" NAME="main Coverage Results" MODIFIED="1614754849472" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/gala_master_distprocess_changing_to_multinodes__1_$main2.coverage" NAME="main2 Coverage Results" MODIFIED="1614754851204" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/gala_master_distprocess$main.coverage" NAME="main Coverage Results" MODIFIED="1612337684365" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/gala_master_distprocess$main2.coverage" NAME="main2 Coverage Results" MODIFIED="1612337455257" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>

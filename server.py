@@ -3,9 +3,21 @@ import torch.multiprocessing as mp
 from multiprocessing.managers import ListProxy, BarrierProxy, AcquirerProxy, EventProxy
 from gala.arguments import get_args
 from gala.model import Policy
+import base64
+import json
+import pickle
 mp.current_process().authkey = b'abc'
 
 
+def encode(content):
+    content = pickle.dumps(content)
+    result = base64.b64encode(content).decode()
+    return result
+
+def decode(content):
+    temp = base64.b64decode(content)
+    result = pickle.loads(temp)
+    return result
 
 def server(manager,host, port, key, args):
     #barrier = manager.Barrier(4)
@@ -40,6 +52,7 @@ def server(manager,host, port, key, args):
             base_kwargs={'recurrent': args.recurrent_policy},
             env_name=args.env_name)
         actor_critic.to('cpu')
+        actor_critic = encode(actor_critic)
         msg_buffer.append(actor_critic)
 
     #manager.register('get_barrier', callable=lambda: barrier, proxytype=BarrierProxy)
